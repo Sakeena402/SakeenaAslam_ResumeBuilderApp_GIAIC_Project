@@ -1,3 +1,5 @@
+import html2pdf from "html2pdf.js";
+
 interface Contact {
     phone: string;
     email: string;
@@ -180,6 +182,31 @@ function saveChanges(element: HTMLElement): void {
             break;
     }
 
+
+    
     localStorage.setItem('resumeData', JSON.stringify(resumeData));
     element.setAttribute('contenteditable', 'false'); 
 }
+
+
+// Function to download the resume as a PDF
+function downloadResume(): void {
+  const element = document.querySelector('.main-content') as HTMLElement;
+  if (!element) {
+    alert('Unable to find the resume content.');
+    return;
+  }
+
+  const options = {
+    margin: 0.5,
+    filename: 'resume.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+  };
+
+  html2pdf().from(element).set(options).save();
+}
+
+// Add event listener to the download button
+document.getElementById('download-button')?.addEventListener('click', downloadResume);
