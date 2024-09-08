@@ -1,0 +1,5 @@
+netlify_link
+https://build-resume-app09.netlify.app/
+
+github link:
+https://github.com/Sakeena402/SakeenaAslam_ResumeBuilderApp_GIAIC_Project
