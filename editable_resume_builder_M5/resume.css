@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 * {
     padding: 0;
     margin: 0;
@@ -264,10 +259,10 @@ body {
     color: #94D9EA;
 }
 
-
+/* Ensure each edit button is correctly positioned and visible */
 .editable-container {
     position: relative;
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem; /* Adjust as needed */
 }
 
 .edit-button {
@@ -286,13 +281,14 @@ body {
 }
 
 .edit-button i {
-    font-size: 16px; 
+    font-size: 16px;
     color: #218bd6;
 }
 
 .edit-button {
     z-index: 10; 
 }
+
 
 @media screen and (max-width: 1200px) {
     .main-content {

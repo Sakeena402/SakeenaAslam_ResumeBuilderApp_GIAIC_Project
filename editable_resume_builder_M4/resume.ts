@@ -151,6 +151,14 @@ window.onload = function (): void {
     }
 };
 
+function makeEditable(className: string): void {
+    const editableElement = document.querySelector(`.${className}`) as HTMLElement | null;
+    if (editableElement) {
+        editableElement.setAttribute('contenteditable', 'true');
+        editableElement.focus();
+        editableElement.addEventListener('blur', () => saveChanges(editableElement));
+    }
+}
 function saveChanges(element: HTMLElement): void {
     const resumeDataJson = localStorage.getItem('resumeData');
     if (!resumeDataJson) return;
