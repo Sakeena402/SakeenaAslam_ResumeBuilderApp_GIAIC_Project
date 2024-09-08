@@ -1,0 +1,294 @@
+
+
+
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.885) 19%, rgba(139, 206, 214, 0.76) 90%);
+    overflow-x: hidden; /* Prevents horizontal overflow */
+}
+
+.main-content {
+    animation: fadeIn 1s ease-in-out;
+    min-height: 100vh;
+    width: 90%;
+    max-width: 1200px; /* Limits the width to prevent overflow */
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem; /* Adds spacing between sections */
+}
+
+.left-section {
+    height: 100%;
+    grid-column: span 2;
+    background-color: #00324A;
+    overflow: hidden; /* Prevents content overflow */
+}
+
+.right-section {
+    height: 100%;
+    grid-column: span 5;
+    background-color: #f7f7f7;
+    overflow: hidden; /* Prevents content overflow */
+}
+
+.left-content, .right-content {
+    padding: 2rem 3rem;
+}
+
+.profile-section {
+    height: 100%;
+    border-bottom: 1px solid #002333;
+}
+
+.profile-image {
+    width: 100%;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    max-width: 15rem; /* Adjusted for better responsive sizing */
+    border-radius: 50%;
+    border: 8px solid #002333;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 1rem 0;
+    word-wrap: break-word; /* Prevents overflow of long names */
+}
+
+.profile-career {
+    font-size: 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #94D9EA;
+    letter-spacing: 1px;
+    padding: 1rem 0;
+}
+
+.section-title {
+    background-color: white;
+    border-radius: 1rem;
+    width: 14rem;
+    height: 3rem;
+}
+
+.title-text {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    padding-top: 1rem;
+    margin: 1rem;
+    color: #002333;
+    text-align: center;
+}
+
+.contact-section ul,
+.skills-section ul {
+    padding-top: 2rem;
+}
+
+.contact-list li, .skills-list li {
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    color: #718096;
+    word-wrap: break-word; /* Prevents overflow of text */
+}
+
+.contact-list li i {
+    padding-right: 1rem;
+    font-size: 1.2rem;
+    color: #2D9CDB;
+}
+
+.contact-link {
+    color: #2D9CDB;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+.skill-item {
+    text-transform: uppercase;
+    color: #f7f7f7;
+    font-size: 1rem;
+}
+
+.experience-details {
+    margin-top: 1rem;
+}
+
+.experience-item {
+    margin-bottom: 2rem;
+}
+
+.experience-role {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 1rem;
+}
+
+.experience-duration {
+    font-size: 1rem;
+    color: #94D9EA;
+}
+
+.experience-description {
+    font-size: 1rem;
+    color: #6b798d;
+}
+
+.right-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: #2D9CDB;
+    position: relative;
+}
+
+.right-title::after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 0.2rem;
+    background-color: #ccc;
+    border-radius: 12px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.p1 {
+    margin: 0.5rem;
+    padding: 1.2rem;
+    line-height: 1.6rem;
+    color: #6b798d;
+    font-size: 1.1rem;
+}
+
+.education-details,
+.projects-section {
+    padding: 2rem 3rem;
+    color: #002333;
+}
+
+.education-item {
+    margin-bottom: 1.5rem;
+}
+
+.degree-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.institution {
+    font-size: 1rem;
+    color: #6b798d;
+    margin-bottom: 0.5rem;
+}
+
+.duration {
+    font-size: 0.9rem;
+    color: #94D9EA;
+}
+
+.projects-details {
+    margin-top: 1rem;
+}
+
+.project-item {
+    margin-bottom: 2rem;
+    padding: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    background-color: #f7f7f7;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #002333;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: #6b798d;
+    margin-bottom: 0.5rem;
+}
+
+.project-tech {
+    font-size: 0.9rem;
+    color: #94D9EA;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr; /* Stacks sections on smaller screens */
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .left-section {
+        grid-column: span 3;
+    }
+
+    .right-section {
+        grid-column: span 4;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profile-image img {
+        max-width: 12rem; /* Adjust image size for smaller screens */
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .profile-name {
+        font-size: 1.5rem; /* Adjust name size for smaller screens */
+    }
+}
