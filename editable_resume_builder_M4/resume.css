@@ -32,25 +32,25 @@ body {
     animation: fadeIn 1s ease-in-out;
     min-height: 100vh;
     width: 90%;
-    max-width: 1200px; /* Limits the width to prevent overflow */
+    max-width: 1200px; 
     margin: 3rem auto;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 1rem; /* Adds spacing between sections */
+    gap: 1rem; 
 }
 
 .left-section {
     height: 100%;
     grid-column: span 2;
     background-color: #00324A;
-    overflow: hidden; /* Prevents content overflow */
+    overflow: hidden;
 }
 
 .right-section {
     height: 100%;
     grid-column: span 5;
     background-color: #f7f7f7;
-    overflow: hidden; /* Prevents content overflow */
+    overflow: hidden; 
 }
 
 .left-content, .right-content {
@@ -75,7 +75,7 @@ body {
 .profile-image img {
     width: 100%;
     height: auto;
-    max-width: 15rem; /* Adjusted for better responsive sizing */
+    max-width: 15rem; 
     border-radius: 50%;
     border: 8px solid #002333;
 }
@@ -87,7 +87,7 @@ body {
     color: #fff;
     letter-spacing: 1px;
     padding: 1rem 0;
-    word-wrap: break-word; /* Prevents overflow of long names */
+    word-wrap: break-word; 
 }
 
 .profile-career {
@@ -126,7 +126,7 @@ body {
     display: flex;
     align-items: center;
     color: #718096;
-    word-wrap: break-word; /* Prevents overflow of text */
+    word-wrap: break-word; 
 }
 
 .contact-list li i {
@@ -296,7 +296,7 @@ profile-name:hover .edit-button {
 /* Responsive Adjustments */
 @media screen and (max-width: 1200px) {
     .main-content {
-        grid-template-columns: 1fr; /* Stacks sections on smaller screens */
+        grid-template-columns: 1fr;
     }
 }
 
@@ -312,12 +312,12 @@ profile-name:hover .edit-button {
 
 @media screen and (max-width: 700px) {
     .profile-image img {
-        max-width: 12rem; /* Adjust image size for smaller screens */
+        max-width: 12rem; 
     }
 }
 
 @media screen and (max-width: 390px) {
     .profile-name {
-        font-size: 1.5rem; /* Adjust name size for smaller screens */
+        font-size: 1.5rem;
     }
 }

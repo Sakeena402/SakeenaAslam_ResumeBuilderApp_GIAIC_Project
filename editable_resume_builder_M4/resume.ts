@@ -45,17 +45,16 @@ window.onload = function (): void {
     if (resumeDataJson) {
         const resumeData: ResumeData = JSON.parse(resumeDataJson);
 
-        // Safely access DOM elements
+        
         const profileNameElement = document.querySelector('.profile-name') as HTMLParagraphElement | null;
         const profileCareerElement = document.querySelector('.profile-career') as HTMLParagraphElement | null;
         const profileImageElement = document.querySelector('.profile-image img') as HTMLImageElement | null;
 
-        // Check if elements are found before setting their properties
+ 
         if (profileNameElement) profileNameElement.textContent = resumeData.profileName;
         if (profileCareerElement) profileCareerElement.textContent = resumeData.profileCareer;
         if (profileImageElement) profileImageElement.src = resumeData.profileImage;
 
-        // Populate contact information
         const contactList = document.querySelector('.contact-list') as HTMLElement | null;
         if (contactList) {
             const contactLinks = contactList.querySelectorAll('li .contact-link') as NodeListOf<HTMLAnchorElement>;
@@ -90,13 +89,13 @@ window.onload = function (): void {
             }
         }
 
-        // Populate skills
+       
         const skillsList = document.querySelector('.skills-list') as HTMLElement | null;
         if (skillsList) {
             skillsList.innerHTML = resumeData.skills.map(skill => `<li><p class="skill-item">${skill}</p></li>`).join('');
         }
 
-        // Populate experience details
+        
         const experienceDetails = document.querySelector('.experience-details') as HTMLElement | null;
         if (experienceDetails) {
             experienceDetails.innerHTML = resumeData.experience.map(exp => `
@@ -108,7 +107,6 @@ window.onload = function (): void {
             `).join('');
         }
 
-        // Populate education details
         const educationDetails = document.querySelector('.education-details') as HTMLElement | null;
         if (educationDetails) {
             educationDetails.innerHTML = resumeData.education.map(edu => `
@@ -136,7 +134,7 @@ window.onload = function (): void {
             aboutMeElement.textContent = resumeData.aboutMe;
         }
 
-        // Attach event listeners to edit buttons
+   
         document.querySelectorAll('.edit-button').forEach(button => 
             button.addEventListener('click', (event) => {
                 const buttonElement = event.currentTarget as HTMLButtonElement;
@@ -153,14 +151,13 @@ window.onload = function (): void {
     }
 };
 
-// Function to save changes back to localStorage
 function saveChanges(element: HTMLElement): void {
     const resumeDataJson = localStorage.getItem('resumeData');
     if (!resumeDataJson) return;
 
     const resumeData: ResumeData = JSON.parse(resumeDataJson);
 
-    // Update resume data based on className
+   
     switch (element.className) {
         case 'profile-name':
             resumeData.profileName = element.textContent || '';
@@ -168,15 +165,14 @@ function saveChanges(element: HTMLElement): void {
         case 'profile-career':
             resumeData.profileCareer = element.textContent || '';
             break;
-        case 'p1': // about me section
+        case 'p1': 
             resumeData.aboutMe = element.textContent || '';
             break;
-        // Add more cases for other fields
+      
         default:
             break;
     }
 
-    // Save updated data back to localStorage
     localStorage.setItem('resumeData', JSON.stringify(resumeData));
-    element.setAttribute('contenteditable', 'false'); // Disable editing after saving
+    element.setAttribute('contenteditable', 'false'); 
 }
