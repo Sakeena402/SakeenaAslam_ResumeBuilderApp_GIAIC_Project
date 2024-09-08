@@ -1,12 +1,20 @@
 {
   "name": "dynamic_resume_builder_m3",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dynamic Resume Builder Project",
   "main": "app.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
+    "start": "node app.js", 
+    "build": "echo 'Build complete'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Sakeena",
+  "license": "ISC",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+   
+  }
 }

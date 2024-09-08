@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Enter Details</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <main class="main-content">
+       
+            <h1 >Enter Your Details</h1>
+   
+        <form id="resumeForm">
+            <section>
+                <h2>Profile</h2>
+                <label for="profileName">Name:</label>
+                <input type="text" id="profileName" name="profileName" required>
+                
+                <label for="profileCareer">Career:</label>
+                <input type="text" id="profileCareer" name="profileCareer" required>
+                
+                <label for="profileImage">Profile Image URL:</label>
+                <input type="text" id="profileImage" name="profileImage" required>
+            </section>
+
+            <section>
+                <h2>Contact Info</h2>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="facebook">Facebook:</label>
+                <input type="text" id="facebook" name="facebook">
+                
+                <label for="instagram">Instagram:</label>
+                <input type="text" id="instagram" name="instagram">
+                
+                <label for="github">GitHub:</label>
+                <input type="text" id="github" name="github">
+                
+                <label for="linkedin">LinkedIn:</label>
+                <input type="text" id="linkedin" name="linkedin">
+                
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <label for="skills">Skills (comma-separated):</label>
+                <input type="text" id="skills" name="skills" required>
+            </section>
+        
+            <section>
+                <h2>About Me</h2>
+                <label for="aboutMe">About Me:</label>
+                <textarea id="aboutMe" name="aboutMe" rows="5" required></textarea>
+            </section>
+            <section id="experience-section">
+                <h2>Experience</h2>
+                <div class="experience-entry">
+                    <label for="experience-role">Role:</label>
+                    <input type="text" id="experience-role" name="experience-role" >
+                
+                    <label for="experience-duration">Duration:</label>
+                    <input type="text" id="experience-duration" name="experience-duration" >
+                
+                    <label for="experience-description">Description:</label>
+                    <textarea id="experience-description" name="experience-description" rows="3" ></textarea>
+                
+                    <button type="button" id="add-experience">Add Experience</button>
+                </div>
+                <ul id="experience-list"></ul>
+            </section>
+            <section id="education-section">
+                <h2>Education</h2>
+                <div class="education-entry">
+                    <label for="education-degree">Degree:</label>
+                    <input type="text" id="education-degree" name="education-degree" >
+                
+                    <label for="education-institution">Institution:</label>
+                    <input type="text" id="education-institution" name="education-institution" >
+                
+                    <label for="education-duration">Duration:</label>
+                    <input type="text" id="education-duration" name="education-duration" >
+                
+                    <button type="button" id="add-education">Add Education</button>
+                </div>
+                <ul id="education-list"></ul>
+            </section>
+        
+            <section id="projects-section">
+                <h2>Projects</h2>
+                <div class="project-entry">
+                    <label for="project-title">Project Title:</label>
+                    <input type="text" id="project-title" name="project-title" >
+                
+                    <label for="project-description">Description:</label>
+                    <textarea id="project-description" name="project-description" rows="3" ></textarea>
+                
+                    <label for="project-tech">Technologies Used:</label>
+                    <input type="text" id="project-tech" name="project-tech" >
+                
+                    <button type="button" id="add-project">Add Project</button>
+                </div>
+                <ul id="project-list"></ul>
+            </section>
+            <button type="submit">Update Resume</button>
+        </form>
+
+    </main>
+</body>
+
+<script src="index.js" type="module"></script>
+</html>

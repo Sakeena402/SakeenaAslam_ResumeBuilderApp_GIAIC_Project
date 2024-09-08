@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="resume.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .dialog.active {
+            display: block;
+        }
+        .dialog .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .dialog input, .dialog textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .dialog button {
+            margin-top: 10px;
+        }
+        .edit-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .edit-button i {
+            color: #007BFF;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main class="main-content">
+        <section class="left-section">
+            <div class="left-content">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="" alt="Profile Image">
+                        <button class="edit-button" onclick="showDialog('profileImageDialog')">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    </div>
+                    <h2 class="profile-name"></h2>
+                    <button class="edit-button" onclick="showDialog('profileNameDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <p class="profile-career"></p>
+                    <button class="edit-button" onclick="showDialog('profileCareerDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </div>
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <div class="section-title">
+                        <h3 class="title-text">Contact Info</h3>
+                    </div>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <a href="#" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-fax"></i>
+                            <a href="#" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-facebook"></i>
+                            <a href="#" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-instagram"></i>
+                            <a href="#" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-github"></i>
+                            <a href="#" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-linkedin"></i>
+                            <a href="#" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <span id="contactLocation"></span>
+                            <button class="edit-button" onclick="showDialog('contactLocationDialog')">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skills-section">
+                    <div class="section-title">
+                        <h3 class="title-text">Skills</h3>
+                    </div>
+                    <ul class="skills-list">
+                        <!-- Skills will be populated here -->
+                    </ul>
+                    <button class="edit-button" onclick="showDialog('skillsDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </div>
+                <div class="experience-section">
+                    <div class="section-title">
+                        <h3 class="title-text">Experience</h3>
+                    </div>
+                    <div class="experience-details">
+                      
+                    </div>
+                    <button class="edit-button" onclick="showDialog('experienceDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="right-section">
+            <div class="right-content">
+                <section class="about-section">
+                    <h2 class="right-title">About Me</h2>
+                    <p class="p1" id="about-me-text"></p>
+                    <button class="edit-button" onclick="showDialog('aboutMeDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </section>
+                <section class="education-section">
+                    <h2 class="right-title">Education</h2>
+                    <div class="education-details">
+                        <!-- Education details will be populated here -->
+                    </div>
+                    <button class="edit-button" onclick="showDialog('educationDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </section>
+                <section class="projects-section">
+                    <h2 class="right-title">Projects</h2>
+                    <div class="projects-details">
+                        <!-- Projects details will be populated here -->
+                    </div>
+                    <button class="edit-button" onclick="showDialog('projectsDialog')">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dialogs -->
+    <div id="profileImageDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('profileImageDialog')">&times;</span>
+        <h3>Edit Profile Image</h3>
+        <input type="text" id="profileImageInput" placeholder="Enter image URL">
+        <button onclick="updateProfileImage()">Update</button>
+    </div>
+
+    <div id="profileNameDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('profileNameDialog')">&times;</span>
+        <h3>Edit Profile Name</h3>
+        <input type="text" id="profileNameInput" placeholder="Enter profile name">
+        <button onclick="updateProfileName()">Update</button>
+    </div>
+
+    <div id="profileCareerDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('profileCareerDialog')">&times;</span>
+        <h3>Edit Profile Career</h3>
+        <input type="text" id="profileCareerInput" placeholder="Enter career description">
+        <button onclick="updateProfileCareer()">Update</button>
+    </div>
+
+    <div id="aboutMeDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('aboutMeDialog')">&times;</span>
+        <h3>Edit About Me</h3>
+        <textarea id="aboutMeInput" placeholder="Enter about me text"></textarea>
+        <button onclick="updateAboutMe()">Update</button>
+    </div>
+
+    <div id="contactLocationDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('contactLocationDialog')">&times;</span>
+        <h3>Edit Contact Location</h3>
+        <input type="text" id="contactLocationInput" placeholder="Enter contact location">
+        <button onclick="updateContactLocation()">Update</button>
+    </div>
+
+    <div id="skillsDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('skillsDialog')">&times;</span>
+        <h3>Edit Skills</h3>
+        <textarea id="skillsInput" placeholder="Enter skills, one per line"></textarea>
+        <button onclick="updateSkills()">Update</button>
+    </div>
+
+    <div id="experienceDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('experienceDialog')">&times;</span>
+        <h3>Edit Experience</h3>
+        <textarea id="experienceInput" placeholder="Enter experience details, one per line"></textarea>
+        <button onclick="updateExperience()">Update</button>
+    </div>
+
+    <div id="educationDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('educationDialog')">&times;</span>
+        <h3>Edit Education</h3>
+        <textarea id="educationInput" placeholder="Enter education details, one per line"></textarea>
+        <button onclick="updateEducation()">Update</button>
+    </div>
+
+    <div id="projectsDialog" class="dialog">
+        <span class="close-button" onclick="hideDialog('projectsDialog')">&times;</span>
+        <h3>Edit Projects</h3>
+        <textarea id="projectsInput" placeholder="Enter project details, one per line"></textarea>
+        <button onclick="updateProjects()">Update</button>
+    </div>
+
+    <script src="resume.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="resume.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+</head>
+<body>
+    <main class="main-content">
+        <section class="left-section">
+            <div class="left-content">
+
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="" alt="image">
+                    </div>
+                
+                    <h2 class="profile-name"></h2>
+                    <p class="profile-career"></p>
+                </div>
+                
+                <div class="contact-section">
+                    <div class="section-title">
+                        <h3 class="title-text">Contact Info</h3>
+                    </div>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <a href="tel:03142035161" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-fax"></i>
+                            <a href="mailto:${contact-link}" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-facebook"></i>
+                            <a href="https://www.facebook.com" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-instagram"></i>
+                            <a href="https://www.instagram.com/sakeena_fatima123" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-github"></i>
+                            <a href="https://github.com/Sakeena402/SakeenaAslam_GovtHouse45Ques_Friday_7-10" target="_blank" class="contact-link">GitHub Profile</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/sakeena-fatima" target="_blank" class="contact-link"></a>
+                        </li>
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skills-section">
+                    <div class="section-title">
+                        <h3 class="title-text">Skills</h3>
+                    </div>
+                    <ul class="skills-list">
+                    </ul>
+                </div>
+
+                <div class="experience-section">
+                    <div class="section-title">
+                        <h3 class="title-text">Experience</h3>
+                    </div>
+                    <div class="experience-details">
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+        <section class="right-section">
+
+            <div class="right-content">
+                <section class="about-section">
+                    <h2 class="right-title">About Me</h2>
+                    <p class="p1" id="about-me-text">
+                         </p>
+                </section>
+                
+
+
+                <section class="education-section">
+                    <h2 class="right-title">Education</h2>
+                    <div class="education-details">
+
+                </section>
+                                
+                <section class="projects-section">
+                    <h2 class="right-title">Projects</h2>
+                    <div class="projects-details">
+                     
+                        
+                    </div>
+                </section>
+                
+                
+            
+            </div>
+        </section>
+    </main>
+    
+   
+</body>
+
+<script src="resume.js" type="module"></script>
+</html>
+interface Contact {
+    phone: string;
+    email: string;
+    facebook: string;
+    instagram: string;
+    github: string;
+    linkedin: string;
+    location: string;
+}
+
+interface Experience {
+    role: string;
+    duration: string;
+    description: string;
+}
+
+interface Education {
+    degree: string;
+    institution: string;
+    duration: string;
+}
+
+interface Project {
+    title: string;
+    description: string;
+    tech: string;
+}
+
+interface ResumeData {
+    profileName: string;
+    profileCareer: string;
+    profileImage: string;
+    contact: Contact;
+    skills: string[];
+    experience: Experience[];
+    education: Education[];
+    aboutMe: string;
+    projects: Project[];
+}
+
+
+
+// Function to handle loading resume data on page load
+window.onload = function (): void {
+    const resumeDataJson = localStorage.getItem('resumeData');
+
+    if (resumeDataJson) {
+        const resumeData: ResumeData = JSON.parse(resumeDataJson);
+
+        // Safely access DOM elements
+        const profileNameElement = document.querySelector('.profile-name') as HTMLParagraphElement | null;
+        const profileCareerElement = document.querySelector('.profile-career') as HTMLParagraphElement | null;
+        const profileImageElement = document.querySelector('.profile-image img') as HTMLImageElement | null;
+
+        // Check if elements are found before setting their properties
+        if (profileNameElement) profileNameElement.textContent = resumeData.profileName;
+        if (profileCareerElement) profileCareerElement.textContent = resumeData.profileCareer;
+        if (profileImageElement) profileImageElement.src = resumeData.profileImage;
+
+        // Populate contact information
+        const contactList = document.querySelector('.contact-list') as HTMLElement | null;
+        if (contactList) {
+            const contactLinks = contactList.querySelectorAll('li .contact-link') as NodeListOf<HTMLAnchorElement>;
+
+            if (contactLinks[0]) {
+                contactLinks[0].textContent = resumeData.contact.phone;
+                contactLinks[0].href = `tel:${resumeData.contact.phone}`;
+            }
+            if (contactLinks[1]) {
+                contactLinks[1].textContent = resumeData.contact.email;
+                contactLinks[1].href = `mailto:${resumeData.contact.email}`;
+            }
+            if (contactLinks[2]) {
+                contactLinks[2].textContent = resumeData.contact.facebook;
+                contactLinks[2].href = resumeData.contact.facebook;
+            }
+            if (contactLinks[3]) {
+                contactLinks[3].textContent = `@${resumeData.contact.instagram}`;
+                contactLinks[3].href = resumeData.contact.instagram;
+            }
+            if (contactLinks[4]) {
+                contactLinks[4].textContent = resumeData.contact.github;
+                contactLinks[4].href = resumeData.contact.github;
+            }
+            if (contactLinks[5]) {
+                contactLinks[5].textContent = resumeData.contact.linkedin;
+                contactLinks[5].href = resumeData.contact.linkedin;
+            }
+            const locationElement = contactList.querySelector('li:nth-child(7)');
+            if (locationElement) {
+                locationElement.textContent = resumeData.contact.location;
+            }
+        }
+
+        // Populate skills
+        const skillsList = document.querySelector('.skills-list') as HTMLElement | null;
+        if (skillsList) {
+            skillsList.innerHTML = resumeData.skills.map(skill => `<li><p class="skill-item">${skill}</p></li>`).join('');
+        }
+
+        // Populate experience details
+        const experienceDetails = document.querySelector('.experience-details') as HTMLElement | null;
+        if (experienceDetails) {
+            experienceDetails.innerHTML = resumeData.experience.map(exp => `
+                <div class="experience-item">
+                    <div class="experience-role">${exp.role}</div>
+                    <div class="experience-duration">${exp.duration}</div>
+                    <div class="experience-description">${exp.description}</div>
+                </div>
+            `).join('');
+        }
+
+        // Populate education details
+        const educationDetails = document.querySelector('.education-details') as HTMLElement | null;
+        if (educationDetails) {
+            educationDetails.innerHTML = resumeData.education.map(edu => `
+                <div class="education-item">
+                    <h3 class="degree-title">${edu.degree}</h3>
+                    <p class="institution">${edu.institution}</p>
+                    <p class="duration">${edu.duration}</p>
+                </div>
+            `).join('');
+        }
+
+        const projectsDetails = document.querySelector('.projects-details') as HTMLElement | null;
+        if (projectsDetails) {
+            projectsDetails.innerHTML = resumeData.projects.map(proj => `
+                <div class="project-item">
+                    <h3 class="project-title">${proj.title}</h3>
+                    <p class="project-description">${proj.description}</p>
+                    <p class="project-tech">Technologies: ${proj.tech}</p>
+                </div>
+            `).join('');
+        }
+
+        const aboutMeElement = document.querySelector('#about-me-text') as HTMLElement | null;
+        if (aboutMeElement) {
+            aboutMeElement.textContent = resumeData.aboutMe;
+        }
+    }
+};
+i want to make it editable add edit icon button
+<button class="edit-button" >
+                        <i class="fa fa-pencil"></i>
+                    </button>
+with every section and part and when i hover it iwll show icon only then 
